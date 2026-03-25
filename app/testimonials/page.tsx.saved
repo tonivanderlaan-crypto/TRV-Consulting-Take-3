@@ -1,0 +1,121 @@
+import Link from "next/link";
+import { ArrowRight, Quote } from "lucide-react";
+
+const testimonials = [
+  {
+    quote:
+      "TRV Consulting came in when our business was at its lowest point. Within the first week, they had a clear diagnosis and a credible action plan. Their team's combination of financial acumen and hands-on operational experience was exactly what we needed. We emerged from the process stronger and better positioned than we'd been in years.",
+    author: "Chief Executive Officer",
+    company: "Mid-Market Manufacturing Company",
+    region: "Ontario, Canada",
+    outcome: "Successful operational turnaround and debt restructuring",
+  },
+  {
+    quote:
+      "The team at TRV was exceptional throughout a very difficult creditor negotiation. They understood the dynamics on all sides of the table and helped us reach a consensual arrangement that preserved the business and protected jobs. I cannot recommend them highly enough.",
+    author: "Board Chairman",
+    company: "Regional Retail Chain",
+    region: "Ontario & Quebec",
+    outcome: "Consensual restructuring arrangement completed",
+  },
+  {
+    quote:
+      "As the lead lender on a complex situation, we retained TRV to conduct an independent business review. Their report was thorough, clear, and actionable — giving our credit committee the confidence to support the borrower's recovery plan. Their judgment throughout was sound and their communication was excellent.",
+    author: "Managing Director, Special Loans",
+    company: "Chartered Bank",
+    region: "Toronto, Canada",
+    outcome: "Successful independent business review and lender advisory",
+  },
+  {
+    quote:
+      "TRV stepped in as interim CFO during a critical period and brought immediate stability to our finance function. They implemented controls, rebuilt forecasting, and were a key part of the leadership team throughout our turnaround. They were thoughtful, professional, and incredibly effective under pressure.",
+    author: "Founder & CEO",
+    company: "Technology Services Company",
+    region: "New York, USA",
+    outcome: "Interim CFO and financial stabilization",
+  },
+  {
+    quote:
+      "Working with TRV on a distressed acquisition was a seamless experience. Their knowledge of the restructuring landscape, combined with their ability to work constructively with all parties, helped us close on a complex deal in a tight timeframe. We would work with them again without hesitation.",
+    author: "Partner",
+    company: "Private Equity Firm",
+    region: "New York & Toronto",
+    outcome: "Distressed M&A transaction advisory",
+  },
+  {
+    quote:
+      "TRV provided expert guidance during our CCAA proceedings. They were pragmatic, creative in finding solutions, and maintained the trust of all stakeholders throughout. Their experience with formal proceedings was invaluable and we credit them with achieving a far better outcome than we initially thought possible.",
+    author: "President",
+    company: "Hospitality & Real Estate Group",
+    region: "Western Canada",
+    outcome: "Successful CCAA restructuring and asset sale",
+  },
+];
+
+export default function TestimonialsPage() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="bg-[#0D1B2A] py-24 text-center px-6">
+        <span className="text-[#B8963E] text-sm font-semibold uppercase tracking-widest">Client Testimonials</span>
+        <h1 className="text-white text-5xl font-bold mt-3 mb-5">What Our Clients Say</h1>
+        <div className="w-16 h-1 bg-[#B8963E] mx-auto mb-6" />
+        <p className="text-white/60 text-lg max-w-2xl mx-auto leading-relaxed">
+          Our work is measured by results. Here is what clients, lenders, and partners have said about working with TRV Consulting.
+        </p>
+      </section>
+
+      {/* Testimonials Grid */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonials.map((t, i) => (
+            <div
+              key={i}
+              className="flex flex-col border border-gray-100 rounded-lg p-8 hover:shadow-xl hover:border-[#B8963E]/30 transition-all duration-300"
+            >
+              <Quote size={28} className="text-[#B8963E]/30 mb-4 shrink-0" />
+
+              <blockquote className="text-gray-700 text-sm leading-relaxed italic flex-1 mb-6">
+                &ldquo;{t.quote}&rdquo;
+              </blockquote>
+
+              <div className="border-t border-gray-100 pt-5">
+                <div className="text-[#0D1B2A] font-bold text-sm">{t.author}</div>
+                <div className="text-gray-500 text-xs mt-0.5">{t.company}</div>
+                <div className="text-gray-400 text-xs mt-0.5">{t.region}</div>
+                <div className="mt-3 inline-block bg-[#B8963E]/10 text-[#0D1B2A] text-xs font-medium px-3 py-1 rounded-full">
+                  {t.outcome}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Disclaimer */}
+      <section className="bg-[#f8f7f4] py-10">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <p className="text-gray-400 text-xs leading-relaxed">
+            Testimonials are shared with the permission of clients and have been paraphrased to protect confidentiality. Client names and company identifiers have been withheld. Past results are not a guarantee of future outcomes.
+          </p>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-[#0D1B2A] text-center">
+        <div className="max-w-2xl mx-auto px-6">
+          <h2 className="text-white text-3xl font-bold mb-4">Join Our Growing List of Success Stories</h2>
+          <p className="text-white/60 mb-8">
+            Contact TRV Consulting to discuss how we can help your business or your client&apos;s situation.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 bg-[#B8963E] text-[#0D1B2A] font-bold uppercase text-sm tracking-wider px-10 py-4 rounded hover:bg-[#d4aa55] transition-colors"
+          >
+            Get in Touch <ArrowRight size={16} />
+          </Link>
+        </div>
+      </section>
+    </>
+  );
+}

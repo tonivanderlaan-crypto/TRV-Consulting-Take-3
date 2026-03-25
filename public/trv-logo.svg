@@ -1,0 +1,28 @@
+<svg width="480" height="120" viewBox="0 0 480 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- ── Diamond crest ── -->
+<polygon points="52,8 88,44 52,80 16,44" fill="none" stroke="#B8963E" stroke-width="1.4"/>
+<!-- Inner filled diamond -->
+<polygon points="52,18 78,44 52,70 26,44" fill="#1a2e45"/>
+<!-- T monogram -->
+<text x="52" y="56" text-anchor="middle"
+font-family="Cinzel, serif" font-weight="600" font-size="32"
+fill="#B8963E" letter-spacing="-1">T</text>
+<!-- Corner dots -->
+<circle cx="52" cy="8" r="2.8" fill="#B8963E"/>
+<circle cx="52" cy="80" r="2.8" fill="#B8963E"/>
+<circle cx="16" cy="44" r="2.8" fill="#B8963E"/>
+<circle cx="88" cy="44" r="2.8" fill="#B8963E"/>
+
+<!-- ── Wordmark ── -->
+<text x="108" y="34" font-family="Cinzel, serif" font-weight="700" font-size="32"
+fill="#F8F5EF" letter-spacing="4">TRV</text>
+
+<!-- Gold rule -->
+<line x1="108" y1="44" x2="475" y2="44" stroke="#B8963E" stroke-width="0.9"/>
+<!-- CONSULTING -->
+<text x="108" y="60" font-family="Montserrat, sans-serif" font-weight="300" font-size="9.5"
+fill="#2C3E50" letter-spacing="6.5">CONSULTING</text>
+<!-- Tagline -->
+<text x="108" y="78" font-family="Montserrat, sans-serif" font-weight="300" font-size="7.5"
+fill="#8E9BAB" letter-spacing="3.2">TURNAROUND · RESTRUCTURING · VALUE</text>
+</svg>
