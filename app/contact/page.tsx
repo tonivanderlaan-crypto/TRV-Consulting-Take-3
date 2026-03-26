@@ -1,7 +1,4 @@
-"use client";
-
-import { useState } from "react";
-import { Mail, Phone, MapPin, Linkedin, Clock, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Send } from "lucide-react";
 
 const contactInfo = [
   {
@@ -31,28 +28,6 @@ const contactInfo = [
 ];
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Form submission logic will go here
-    setSubmitted(true);
-  };
-
   return (
     <>
       {/* Hero */}
@@ -107,18 +82,18 @@ export default function ContactPage() {
             <h2 className="text-[#0D1B2A] text-2xl font-bold mb-2">Send Us a Message</h2>
             <div className="w-10 h-1 bg-[#B8963E] mb-8" />
 
-            {submitted ? (
-              <div className="bg-[#f8f7f4] border border-[#B8963E]/30 rounded-lg p-10 text-center">
-                <div className="w-14 h-14 rounded-full bg-[#B8963E]/10 flex items-center justify-center mx-auto mb-4">
-                  <Send size={24} className="text-[#B8963E]" />
-                </div>
-                <h3 className="text-[#0D1B2A] text-xl font-bold mb-2">Message Received</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Thank you for reaching out. A member of our team will be in touch with you shortly.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form
+                action="/cgi-bin/FormMail.pl"
+                method="POST"
+                className="space-y-5"
+              >
+                {/* Hidden FormMail fields */}
+                <input type="hidden" name="recipient" value="info@trvconsulting.ca" />
+                <input type="hidden" name="subject" value="New Contact Form Submission - TRV Consulting" />
+                <input type="hidden" name="redirect" value="https://trvconsulting.ca/contact/thank-you.html" />
+                <input type="hidden" name="required" value="name,email,message" />
+                <input type="hidden" name="missing_fields_redirect" value="https://trvconsulting.ca/contact/" />
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-[#0D1B2A] text-xs font-semibold uppercase tracking-wider mb-1.5">
@@ -128,8 +103,6 @@ export default function ContactPage() {
                       type="text"
                       name="name"
                       required
-                      value={formData.name}
-                      onChange={handleChange}
                       className="w-full border border-gray-200 rounded px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-[#B8963E] transition-colors"
                       placeholder="Your full name"
                     />
@@ -141,8 +114,6 @@ export default function ContactPage() {
                     <input
                       type="text"
                       name="company"
-                      value={formData.company}
-                      onChange={handleChange}
                       className="w-full border border-gray-200 rounded px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-[#B8963E] transition-colors"
                       placeholder="Your company name"
                     />
@@ -158,8 +129,6 @@ export default function ContactPage() {
                       type="email"
                       name="email"
                       required
-                      value={formData.email}
-                      onChange={handleChange}
                       className="w-full border border-gray-200 rounded px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-[#B8963E] transition-colors"
                       placeholder="your@email.com"
                     />
@@ -171,8 +140,6 @@ export default function ContactPage() {
                     <input
                       type="tel"
                       name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
                       className="w-full border border-gray-200 rounded px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-[#B8963E] transition-colors"
                       placeholder="+1 (000) 000-0000"
                     />
@@ -185,18 +152,18 @@ export default function ContactPage() {
                   </label>
                   <select
                     name="service"
-                    value={formData.service}
-                    onChange={handleChange}
                     className="w-full border border-gray-200 rounded px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-[#B8963E] transition-colors bg-white"
                   >
                     <option value="">Select a service area</option>
-                    <option value="turnaround">Turnaround Advisory</option>
-                    <option value="restructuring">Restructuring</option>
-                    <option value="value-creation">Value Creation</option>
-                    <option value="ibr">Independent Business Review</option>
-                    <option value="interim">Interim Management</option>
-                    <option value="insolvency">Insolvency & Formal Proceedings</option>
-                    <option value="other">Other / General Inquiry</option>
+                    <option value="Interim Management">Interim Management</option>
+                    <option value="Independent Board Advisory">Independent Board Advisory</option>
+                    <option value="Independent Business Review">Independent Business Review</option>
+                    <option value="Independent Shareholder Advisory">Independent Shareholder Advisory</option>
+                    <option value="Insolvency & Formal Proceedings">Insolvency &amp; Formal Proceedings</option>
+                    <option value="Turnaround Advisory">Turnaround Advisory</option>
+                    <option value="Restructuring">Restructuring</option>
+                    <option value="Value Creation">Value Creation</option>
+                    <option value="Other / General Inquiry">Other / General Inquiry</option>
                   </select>
                 </div>
 
@@ -207,8 +174,6 @@ export default function ContactPage() {
                   <textarea
                     name="message"
                     required
-                    value={formData.message}
-                    onChange={handleChange}
                     rows={5}
                     className="w-full border border-gray-200 rounded px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-[#B8963E] transition-colors resize-none"
                     placeholder="Please briefly describe your situation or what you'd like to discuss..."
@@ -226,7 +191,6 @@ export default function ContactPage() {
                   All submissions are treated with strict confidentiality.
                 </p>
               </form>
-            )}
           </div>
         </div>
       </section>
