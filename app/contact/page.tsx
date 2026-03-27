@@ -90,7 +90,7 @@ export default function ContactPage() {
                 <input type="hidden" name="access_key" value="bdfa3ef8-1304-4f5d-8dad-9bb8996aab78" />
                 <input type="hidden" name="subject" value="New Contact Form Submission - TRV Consulting" />
                 <input type="hidden" name="from_name" value="TRV Consulting Website" />
-                <input type="hidden" name="redirect" value="https://trvconsulting.ca/contact/thank-you/" />
+                <input type="hidden" name="redirect" value="https://trvconsulting.ca/" />
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
