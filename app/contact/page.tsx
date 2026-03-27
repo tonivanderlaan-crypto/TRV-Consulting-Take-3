@@ -83,16 +83,14 @@ export default function ContactPage() {
             <div className="w-10 h-1 bg-[#B8963E] mb-8" />
 
               <form
-                action="/cgi-bin/FormMail.pl"
+                action="https://api.web3forms.com/submit"
                 method="POST"
                 className="space-y-5"
               >
-                {/* Hidden FormMail fields */}
-                <input type="hidden" name="recipient" value="info@trvconsulting.ca" />
+                <input type="hidden" name="access_key" value="bdfa3ef8-1304-4f5d-8dad-9bb8996aab78" />
                 <input type="hidden" name="subject" value="New Contact Form Submission - TRV Consulting" />
+                <input type="hidden" name="from_name" value="TRV Consulting Website" />
                 <input type="hidden" name="redirect" value="https://trvconsulting.ca/contact/thank-you.html" />
-                <input type="hidden" name="required" value="name,email,message" />
-                <input type="hidden" name="missing_fields_redirect" value="https://trvconsulting.ca/contact/" />
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
